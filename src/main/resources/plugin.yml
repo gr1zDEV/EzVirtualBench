@@ -1,0 +1,79 @@
+name: EzVirtualWorkbench
+main: com.ezinnovations.ezvirtualworkbench.EzVirtualWorkbenchPlugin
+version: ${project.version}
+author: EzInnovations
+api-version: '1.14'
+folia-supported: true
+
+commands:
+  craft:
+    description: Open a virtual crafting table.
+    usage: /craft
+    aliases: [workbench, wb]
+    permission: ezvirtualworkbench.craft
+  ec:
+    description: Open your real Ender Chest.
+    usage: /ec
+    aliases: [enderchest]
+    permission: ezvirtualworkbench.enderchest
+  anvil:
+    description: Open a virtual anvil.
+    usage: /anvil
+    permission: ezvirtualworkbench.anvil
+  smithing:
+    description: Open a virtual smithing table.
+    usage: /smithing
+    permission: ezvirtualworkbench.smithing
+  grindstone:
+    description: Open a virtual grindstone.
+    usage: /grindstone
+    permission: ezvirtualworkbench.grindstone
+  loom:
+    description: Open a virtual loom.
+    usage: /loom
+    permission: ezvirtualworkbench.loom
+  stonecutter:
+    description: Open a virtual stonecutter.
+    usage: /stonecutter
+    permission: ezvirtualworkbench.stonecutter
+  cartography:
+    description: Open a virtual cartography table.
+    usage: /cartography
+    permission: ezvirtualworkbench.cartography
+  ezvirtualworkbench:
+    description: Main admin command.
+    usage: /ezvirtualworkbench reload
+    aliases: [ezvw]
+    permission: ezvirtualworkbench.admin.reload
+
+permissions:
+  ezvirtualworkbench.craft:
+    description: Allows use of /craft.
+    default: true
+  ezvirtualworkbench.enderchest:
+    description: Allows use of /ec.
+    default: true
+  ezvirtualworkbench.anvil:
+    description: Allows use of /anvil.
+    default: op
+  ezvirtualworkbench.smithing:
+    description: Allows use of /smithing.
+    default: op
+  ezvirtualworkbench.grindstone:
+    description: Allows use of /grindstone.
+    default: op
+  ezvirtualworkbench.loom:
+    description: Allows use of /loom.
+    default: op
+  ezvirtualworkbench.stonecutter:
+    description: Allows use of /stonecutter.
+    default: op
+  ezvirtualworkbench.cartography:
+    description: Allows use of /cartography.
+    default: op
+  ezvirtualworkbench.admin.reload:
+    description: Allows /ezvirtualworkbench reload.
+    default: op
+  ezvirtualworkbench.bypass.cooldown:
+    description: Bypass all per-command cooldowns.
+    default: op
