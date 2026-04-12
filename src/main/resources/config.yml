@@ -1,0 +1,61 @@
+# EzVirtualWorkbench configuration
+prefix: "&8[&bEzVirtualWorkbench&8]&r "
+
+messages:
+  reload: "&aConfiguration reloaded successfully."
+  no-permission: "&cYou do not have permission to do that."
+  player-only: "&cOnly players can use this command."
+  disabled-world: "&cThis command is disabled in your current world."
+  cooldown: "&ePlease wait &6%seconds%&e second(s) before using this command again."
+  command-disabled: "&cThat command is currently disabled."
+  unsupported-menu: "&cThat menu is not available on this server version."
+  opened: "&aOpened &f%menu%&a."
+
+sounds:
+  enabled: true
+  open-sound: BLOCK_CHEST_OPEN
+  volume: 0.8
+  pitch: 1.0
+
+# Any world listed here will block all utility menu commands.
+disabled-worlds:
+  - example_disabled_world
+
+# Per-command settings. "enabled" controls availability.
+# "cooldown-seconds" controls per-player cooldowns for each command.
+commands:
+  craft:
+    enabled: true
+    cooldown-seconds: 0
+  ec:
+    enabled: true
+    cooldown-seconds: 0
+  anvil:
+    enabled: true
+    cooldown-seconds: 0
+  smithing:
+    enabled: true
+    cooldown-seconds: 0
+  grindstone:
+    enabled: true
+    cooldown-seconds: 0
+  loom:
+    enabled: true
+    cooldown-seconds: 0
+  stonecutter:
+    enabled: true
+    cooldown-seconds: 0
+  cartography:
+    enabled: true
+    cooldown-seconds: 0
+
+# Alias section for documentation/ops reference; command aliases are defined in plugin.yml.
+aliases:
+  craft:
+    - workbench
+    - wb
+  ec:
+    - enderchest
+
+settings:
+  show-success-message: false
