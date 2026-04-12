@@ -5,6 +5,7 @@ import com.ezinnovations.ezvirtualworkbench.command.EzVirtualWorkbenchAdminComma
 import com.ezinnovations.ezvirtualworkbench.command.UtilityCommandExecutor;
 import com.ezinnovations.ezvirtualworkbench.command.subcommand.ReloadSubcommand;
 import com.ezinnovations.ezvirtualworkbench.config.ConfigManager;
+import com.ezinnovations.ezvirtualworkbench.model.MenuType;
 import com.ezinnovations.ezvirtualworkbench.service.CooldownService;
 import com.ezinnovations.ezvirtualworkbench.service.MenuOpenService;
 import com.ezinnovations.ezvirtualworkbench.service.WorldRestrictionService;
@@ -41,16 +42,24 @@ public class EzVirtualWorkbenchPlugin extends JavaPlugin {
         EzVirtualWorkbenchAdminCommand adminCommand = new EzVirtualWorkbenchAdminCommand(reloadSubcommand, messageUtil);
 
         CommandRegistrar commandRegistrar = new CommandRegistrar(this);
-        commandRegistrar.register("craft", utilityCommandExecutor);
-        commandRegistrar.register("ec", utilityCommandExecutor);
-        commandRegistrar.register("anvil", utilityCommandExecutor);
-        commandRegistrar.register("smithing", utilityCommandExecutor);
-        commandRegistrar.register("grindstone", utilityCommandExecutor);
-        commandRegistrar.register("loom", utilityCommandExecutor);
-        commandRegistrar.register("stonecutter", utilityCommandExecutor);
-        commandRegistrar.register("cartography", utilityCommandExecutor);
+        registerUtilityCommands(commandRegistrar, configManager, utilityCommandExecutor);
         commandRegistrar.register("ezvirtualworkbench", adminCommand);
 
         getLogger().info("EzVirtualWorkbench enabled.");
+    }
+
+    private void registerUtilityCommands(
+        CommandRegistrar commandRegistrar,
+        ConfigManager configManager,
+        UtilityCommandExecutor utilityCommandExecutor
+    ) {
+        for (MenuType menuType : MenuType.values()) {
+            if (!configManager.isCommandEnabled(menuType)) {
+                getLogger().info("Skipping disabled command /" + menuType.getCommandKey() + ".");
+                continue;
+            }
+
+            commandRegistrar.register(menuType.getCommandKey(), utilityCommandExecutor);
+        }
     }
 }
